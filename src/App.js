@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Comment from "./components/Comment";
+import AddComment from './components/AddComment';
 
 class App extends Component {
   /*state = {
@@ -48,12 +49,36 @@ class App extends Component {
 
   delComment = (id) => {
     console.log('id', id)
+    fetch('https://jsonplaceholder.typicode.com/comments/' +id,{
+      method: 'DELETE',
+    })
+    .then(response => response.json())
+    .then(result => this.setState({comments: result}))
     this.setState ({ 
       comments: [...this.state.comments.filter(
         item => item.id !== id)]
       })
   }
+    
+  addBody=(body) => {
+    console.log('lulo', body);
+    fetch('https://jsonplaceholder.typicode.com/comments/' +body,{
+      method:'POST',
+    })
+    .then(response => response.json())
+    .then(result => this.setState({comments: result}))
 
+    const newComment = {
+       id:12345,
+       email:"andrea@andrea.com",
+       body:"Probando insert"
+    }
+
+    this.setState({
+     comments:[...this.state.comments.newComment(
+      item => item.body !== body)]
+    });
+  }
 
   render() {
     console.log("taco", this.delComment);
@@ -65,6 +90,7 @@ class App extends Component {
             Comments
           </p>
         </header>
+        <AddComment addBody={this.addBody}/>
         <Comment comments={this.state.comments} delComment={this.delComment}/>
       </div>
     );

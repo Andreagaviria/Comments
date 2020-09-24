@@ -11,11 +11,11 @@ getStyle = () => {
 }
 
   render() {
-    const {id, name} = this.props.comment;
+    const {id, body} = this.props.comment;
     return (
       <div style = { this.getStyle() }>
         <p>
-           {name}
+           {body}
         </p>
         <button onClick={this.props.delComment.bind(this, id)}>X</button>
       </div>

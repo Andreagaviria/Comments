@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 
 class Comment extends Component {
   render() {
-    return this.props.comments.map((item) => (
-      <CommentItem comment={item} key={item.id} delComment={this.props.delComment} />
-    ));
+    return this.props.comments.map((item) => 
+      <CommentItem key={item.id} comment={item} 
+      delComment={this.props.delComment} 
+   />
+    );
   }
 }
 
