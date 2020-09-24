@@ -62,22 +62,24 @@ class App extends Component {
     
   addBody=(body) => {
     console.log('lulo', body);
-    fetch('https://jsonplaceholder.typicode.com/comments/' +body,{
-      method:'POST',
-    })
-    .then(response => response.json())
-    .then(result => this.setState({comments: result}))
-
+    
     const newComment = {
-       id:12345,
-       email:"andrea@andrea.com",
-       body:"Probando insert"
-    }
+      email:"andrea@andrea.com",
+      body:body
+   }
 
-    this.setState({
-     comments:[...this.state.comments.newComment(
-      item => item.body !== body)]
-    });
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+    method:'POST',
+    body:JSON.stringify({newComment}),
+    headers: {
+      "content-type":"application/json; charset=UTF-8"
+    }
+  })
+    .then(response => response.json())
+    .then(json => console.log(json))
+     this.setState({
+     comments:[...this.state.comments,newComment]
+     })
   }
 
   render() {
