@@ -53,13 +53,13 @@ class App extends Component {
       method: 'DELETE',
     })
     .then(response => response.json())
-    .then(result => this.setState({comments: result}))
-    this.setState ({ 
+    .then(result => this.setState ({ 
       comments: [...this.state.comments.filter(
         item => item.id !== id)]
-      })
+      }))
   }
     
+
   addBody=(body) => {
     console.log('lulo', body);
     

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 class Comment extends Component {
   render() {
+    console.log('test', this.props.comments)
     return this.props.comments.map((item) => 
       <CommentItem key={item.id} comment={item} 
       delComment={this.props.delComment} 
